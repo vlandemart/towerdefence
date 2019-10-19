@@ -29,6 +29,32 @@ public class EnemyController : MonoBehaviour
 			Debug.LogError("No waypoints assigned to EnemyController!");
 	}
 
+	public Enemy GetClosestEnemy(Vector2 pos, float range)
+	{
+		Vector2 castlePos = waypoints[waypoints.Count - 1].transform.position;
+		Vector2 enemyPos;
+		Enemy bestEnemy = null;
+		float bestDistance = 1000f;
+		float distance;
+
+		foreach (Enemy enemy in enemeisActive)
+		{
+			if (enemy.Dead)
+				continue;
+			enemyPos = enemy.transform.position;
+			if (Vector2.Distance(enemyPos, pos) > range)
+				continue;
+
+			distance = Vector2.Distance(castlePos, enemyPos);
+			if (distance <= bestDistance)
+			{
+				bestEnemy = enemy;
+				bestDistance = distance;
+			}
+		}
+		return (bestEnemy);
+	}
+
 	private void PopulateEnemiesArray()
 	{
 		Enemy enemy = Instantiate(enemyPrefab, Vector3.zero, Quaternion.identity);
@@ -72,7 +98,7 @@ public class EnemyController : MonoBehaviour
 
 	#region Editor Only Methods
 	
-	//Important: gameobjects are added from the bottom to the top
+	//Important: this way gameobjects are added in inconsistent order
 	[ContextMenu("Assign Waypoints")]
 	private void AssignWaypoints()
 	{

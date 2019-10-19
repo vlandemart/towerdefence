@@ -9,7 +9,6 @@ public class GameController : MonoBehaviour
 
 	private int coins;
 	private int health;
-	public float GameSpeed = 1f;
 
 	private void Awake()
 	{
@@ -28,7 +27,7 @@ public class GameController : MonoBehaviour
 
 	public void AddReward(int coinsToAdd)
 	{
-		coinsToAdd += coins;
+		coins += coinsToAdd;
 		//update hud
 		//update radial menu if active
 	}

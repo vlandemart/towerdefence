@@ -8,5 +8,5 @@ public class EnemyData : ScriptableObject
 	public int Damage;
 	public int MinReward;
 	public int MaxReward;
-	public Sprite enemySprite;
+	public Sprite EnemySprite;
 }

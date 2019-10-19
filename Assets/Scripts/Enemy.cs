@@ -2,6 +2,7 @@
 
 public class Enemy : MonoBehaviour
 {
+	public bool Dead;
 	private float health;
 	private float speed;
 	private int damage;
@@ -14,21 +15,21 @@ public class Enemy : MonoBehaviour
 
 	public void SetUp(Vector2 startPos, EnemyData data)
 	{
+		Dead = false;
 		health = data.Health;
 		speed = data.Speed;
 		damage = data.Damage;
-		reward = Random.Range(data.MinReward, data.MaxReward);
-		spriteRenderer.sprite = data.enemySprite;
+		reward = Random.Range(data.MinReward, data.MaxReward + 1);
+		spriteRenderer.sprite = data.EnemySprite;
 		transform.position = startPos;
 		GetMovePos();
 	}
 
 	private void Update()
 	{
-		if (health <= 0)
+		if (Dead)
 			return;
-		
-		
+
 		Vector2 pos = transform.position;
 		Move();
 		if (Vector2.Distance(pos, movePos) < .5f)
@@ -52,7 +53,7 @@ public class Enemy : MonoBehaviour
 	{
 		Vector2 pos = transform.position;
 		Vector2 dir = (movePos - pos).normalized;
-		transform.position = pos + dir * (speed * Time.deltaTime * GameController.Instance.GameSpeed);
+		transform.position = pos + dir * (speed * Time.deltaTime);
 	}
 
 	public void TakeDamage(float damageToTake)
@@ -65,6 +66,7 @@ public class Enemy : MonoBehaviour
 	
 	private void Die()
 	{
+		Dead = true;
 		//Play some particle effects
 		//Play death animation
 		GameController.Instance.AddReward(reward);

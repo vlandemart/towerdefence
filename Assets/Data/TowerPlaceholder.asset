@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fc7359538d6034c9bf4428bf487afd3, type: 3}
+  m_Name: TowerPlaceholder
+  m_EditorClassIdentifier: 
+  Price: 0
+  Range: 0
+  Damage: 0
+  ShootInterval: 1000
+  TowerSprite: {fileID: 21300016, guid: 31bac0af785d7588b933841abf775fc5, type: 3}
+  PossibleUpgrades:
+  - {fileID: 11400000, guid: 841bfef95750d9d3d8d9110f4ee5bce5, type: 2}
+  - {fileID: 11400000, guid: 7f5aef7b0637cac42b8b0f05d5d1e8b8, type: 2}
+  - {fileID: 11400000, guid: 4eb8886449f6e27eaaa0517329ac1a36, type: 2}
